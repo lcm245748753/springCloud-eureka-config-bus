@@ -1,0 +1,35 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lcm245748753/lcm.git     # 配置git仓库的地址
+          search-paths: /config-properties                             # git仓库地址下的相对地址，可以配置多个，用,分割。
+          username: lcm245748753                                        # git仓库的账号
+          password: lcm233962                                    # git仓库的密码
+#安装rabbitmq，docker安装：1：docker search rabbitmq:management 查看版本
+#                        2：docker pull rabbitmq:management，如果docker pull rabbitmq
+#                           后面不带management，启动rabbitmq后是无法打开管理界面的，
+#                           所以我们要下载带management插件的rabbitmq.
+#                        3：docker run -d --name rabbitmq --publish 5671:5671 --publish 5672:5672 --publish 4369:4369 --publish 25672:25672 --publish 15671:15671 --publish 15672:15672 rabbitmq:management
+
+  rabbitmq:
+    host: 192.168.131.119 #IP地址
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/   ## 注册中心eurka地址
+
+#springboot 1.5.X 以上默认开通了安全认证，所以需要在配置文件application.properties添加以下配置
+management:
+  security:
+     enabled: false
+

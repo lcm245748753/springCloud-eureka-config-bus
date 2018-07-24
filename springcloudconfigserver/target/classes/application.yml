@@ -1,0 +1,30 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lcm245748753/lcm.git     # 配置git仓库的地址
+          search-paths: /config-properties                             # git仓库地址下的相对地址，可以配置多个，用,分割。
+          username: lcm245748753                                        # git仓库的账号
+          password: lcm233962                                    # git仓库的密码
+
+  rabbitmq:
+    host: 192.168.131.119
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/   ## 注册中心eurka地址
+
+#springboot 1.5.X 以上默认开通了安全认证，所以需要在配置文件application.properties添加以下配置
+management:
+  security:
+     enabled: false
+
