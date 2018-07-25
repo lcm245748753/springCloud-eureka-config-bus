@@ -32,4 +32,8 @@ eureka:
 management:
   security:
      enabled: false
+#用此命令模仿webhook 模拟触发server端bus/refresh.
+#    curl -X POST http://localhost:8001/bus/refresh
+
+
 
